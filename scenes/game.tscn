@@ -1,11 +1,13 @@
-[gd_scene load_steps=13 format=4 uid="uid://bt3sq4o5jk1pd"]
+[gd_scene load_steps=15 format=4 uid="uid://bt3sq4o5jk1pd"]
 
+[ext_resource type="Script" path="res://scripts/game_manager.gd" id="1_rnp4e"]
 [ext_resource type="PackedScene" uid="uid://c7htmls1ok0hd" path="res://scenes/player.tscn" id="1_t1egg"]
 [ext_resource type="Texture2D" uid="uid://b8my04vmhm1nc" path="res://assets/sprites/world_tileset.png" id="2_00chi"]
 [ext_resource type="PackedScene" uid="uid://ct171v2btoorh" path="res://scenes/platform.tscn" id="3_iwyca"]
 [ext_resource type="PackedScene" uid="uid://b1evh3tmlaqcr" path="res://scenes/coin.tscn" id="4_kyefp"]
 [ext_resource type="PackedScene" uid="uid://dr20ummh0fs47" path="res://scenes/killzone.tscn" id="5_5eysv"]
 [ext_resource type="PackedScene" uid="uid://cti0t7s4sfw6t" path="res://scenes/slime.tscn" id="6_7wc3v"]
+[ext_resource type="FontFile" uid="uid://b7vg8eut4dss0" path="res://assets/fonts/PixelOperator8-Bold.ttf" id="7_s3bva"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_yprba"]
 texture = ExtResource("2_00chi")
@@ -215,6 +217,22 @@ _data = {
 
 [node name="Game" type="Node2D"]
 
+[node name="GameManager" type="Node" parent="."]
+unique_name_in_owner = true
+script = ExtResource("1_rnp4e")
+
+[node name="ScoreLabel" type="Label" parent="GameManager"]
+top_level = true
+z_index = 1
+offset_left = -51.0
+offset_top = -222.0
+offset_right = 36.0
+offset_bottom = -192.0
+theme_override_fonts/font = ExtResource("7_s3bva")
+theme_override_font_sizes/font_size = 8
+text = "You collected x coins"
+autowrap_mode = 2
+
 [node name="TileMapLayers" type="Node" parent="."]
 
 [node name="BackgroundLayer" type="TileMapLayer" parent="TileMapLayers"]
@@ -275,3 +293,15 @@ autoplay = "move"
 [node name="Slime" parent="." instance=ExtResource("6_7wc3v")]
 top_level = true
 position = Vector2(314, -76)
+
+[node name="Labels" type="Node" parent="."]
+
+[node name="Label" type="Label" parent="Labels"]
+top_level = true
+offset_left = -164.0
+offset_top = -96.0
+offset_right = -24.0
+offset_bottom = -73.0
+theme_override_fonts/font = ExtResource("7_s3bva")
+theme_override_font_sizes/font_size = 8
+text = "Press Space to Jump"
